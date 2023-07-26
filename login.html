@@ -134,6 +134,24 @@
   
   <!-- Custom scripts -->
   <script src="assets/js/app-script.js"></script>
-  
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      // Remove the const axios = require("axios").default; line from the code
+      const baseUrl = "http://localhost:3000";
+      const username = document.getElementById("username");
+      const password = document.getElementById("password");
+      function Login() {
+        axios
+          .post(baseUrl + "/auth/signin", {
+            username: username.value,
+            password: password.value,
+          })
+          .then((res) => {
+            console.log(res.data);
+            location.href="index.html";
+          })
+          .catch((error) => console.error(error));
+      }
+    </script>
 </body>
 </html>
